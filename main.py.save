@@ -64,6 +64,7 @@ def book_info():
 def issue():
     collection = connection()
     rec_data = request.get_json(force = True)
+    print(rec_data)
     id = rec_data["id"]
     ins_data = {
                 "student_name":rec_data["student_name"],
@@ -72,10 +73,10 @@ def issue():
                 "fine_rem":0,
                 "issued_bool":"1"
                 }
-    x=collection.find({"id":id})
-    for i in x:
-        if i["student_name"] != "":
-           return "Book already issued"
+    print(datetime.date.today())
+    
+for i in collection.find({"id" : id}):
+        if :
         collection.update_one({"id":rec_data["id"]},{"$set":ins_data})
         return "Done"
     return "This book doesn't exist in database"
