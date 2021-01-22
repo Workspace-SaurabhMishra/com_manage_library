@@ -38,18 +38,11 @@ def new_books():
 def return_():
     collection = connection()
     rec_data = request.get_json(force=True)
-    for i in collection.find({"id":rec_data["id"]}):
-	if i["issued_bool"] == "1":
-    		ins_data = {
-                	"student_id":"",
-                	"student_name":"",
-               		"issued_date":""
-                	}
-		collection.update_one({"id":rec_data["id"]},{"$set":ins_data})
-		return "Done Bro!!"
-	else:
-		return "This Book is not issued"
-   return "No match Found"
+    ins_data = {
+                "student_id":"",
+                "student_name":"",
+                "issued_date":""
+                }
     collection.update_one({"id":rec_data["id"]},{"$set":ins_data})
     return "Done Bro!!"
 
